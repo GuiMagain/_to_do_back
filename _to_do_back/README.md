@@ -1,25 +1,18 @@
 # To-Do API com FastAPI e Docker Compose
 
-API RESTful desenvolvida com FastAPI e SQLAlchemy para gerenciamento de tarefas, empacotada com Docker Compose e gerenciada via Poetry.
+Esta aplicação consiste em uma API RESTful desenvolvida com Python 3.11, FastAPI e SQLAlchemy para gerenciamento de tarefas, empacotada com Docker Compose e gerenciada via Poetry.
 
----
+Para executar o projeto, é necessário ter o Git, o Docker e o Docker Compose instalados no sistema. Primeiramente, clone este repositório executando `git clone <URL_DO_SEU_REPOSITORIO>` e acesse o diretório do projeto com `cd _to_do_back`.
 
-## 🛠️ Tecnologias Utilizadas
+As variáveis de ambiente padrão já vêm definidas diretamente no arquivo `docker-compose.yml` (`DATABASE_URL="sqlite:///.to_do.db"`, `MEU_USUARIO="admin"`, `MINHA_SENHA="12345678"` e `PYTHONUNBUFFERED=1`). Caso deseje customizá-las localmente com um arquivo próprio, utilize o modelo de exemplo executando `cp .env.example .env`.
 
-* **FastAPI**
-* **Poetry**
-* **Docker & Docker Compose**
-* **SQLite / SQLAlchemy**
-* **Uvicorn**
+Para construir a imagem Docker e iniciar os contêineres em segundo plano, execute exatamente o comando:
+`docker-compose up --build -d`
 
----
+Caso queira acompanhar a saída e os logs do contêiner em tempo real, execute:
+`docker-compose logs -f app`
 
-## 🚀 Como Executar o Projeto
+Com a aplicação em execução, acesse a documentação interativa da API no navegador pelo Swagger UI em `http://localhost:8000/docs` ou pelo ReDoc em `http://localhost:8000/redoc`. As rotas exigem autenticação HTTP Basic; ao realizar requisições ou clicar em Authorize no Swagger, utilize o usuário `admin` e a senha `12345678`.
 
-### Pré-requisitos
-* Git
-* Docker e Docker Compose instalados
-
-### Passo a passo
-
-### Passo a passo 1. **Clone o repositório:**    ```bash    git clone <URL_DO_SEU_REPOSITORIO>    cd _to_do_back
+Para encerrar a aplicação e parar os contêineres, execute exatamente o comando:
+`docker-compose down`
