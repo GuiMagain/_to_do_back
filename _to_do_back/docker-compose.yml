@@ -1,0 +1,17 @@
+name: todo-api
+
+services:
+  app:
+    build: .
+    container_name: to-do-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app:Z
+    environment:
+      - DATABASE_URL=sqlite:///.to_do.db
+      - MEU_USUARIO=admin
+      - MINHA_SENHA=12345678
+      - PYTHONUNBUFFERED=1
+    command: poetry run uvicorn to_do:app --host 0.0.0.0 --port 8000 --reload
+    restart: on-failure
